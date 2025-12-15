@@ -6,15 +6,15 @@ label:
   en_US: LKEAP
   zh_Hans: 腾讯知识引擎
 description:
-  en_US: Models provide by Tencent LKEAP International, including text embedding and reranking.
-  zh_Hans: 腾讯知识引擎国际站，提供文本嵌入和重排序能力。
+  en_US: Models provided by Tencent LKEAP International, including DeepSeek LLMs, text embedding and reranking.
+  zh_Hans: 腾讯知识引擎国际站，提供DeepSeek大语言模型、文本嵌入和重排序能力。
 icon: icon_s_en.svg
 resource:
   memory: 268435456
   permission:
     model:
       enabled: true
-      llm: false
+      llm: true
       text_embedding: true
       rerank: true
       tts: false

@@ -1,0 +1,65 @@
+model: deepseek-v3.1-terminus
+label:
+  zh_Hans: deepseek-v3.1-terminus
+  en_US: deepseek-v3.1-terminus
+model_type: llm
+features:
+  - agent-thought
+model_properties:
+  mode: chat
+  context_size: 128000
+parameter_rules:
+  - name: temperature
+    use_template: temperature
+    type: float
+    default: 0.6
+    min: 0.0
+    max: 2.0
+    help:
+      zh_Hans: 控制生成结果的多样性和随机性。数值越小，越严谨；数值越大，越发散。
+      en_US: Control the diversity and randomness of generated results. The smaller the value, the more rigorous it is; the larger the value, the more divergent it is.
+  - name: top_p
+    use_template: top_p
+    type: float
+    default: 0.6
+    min: 0.0
+    max: 1.0
+    help:
+      zh_Hans: 核采样参数，控制生成结果的多样性。
+      en_US: Nucleus sampling parameter, controls the diversity of generated results.
+  - name: max_tokens
+    use_template: max_tokens
+    type: int
+    default: 4096
+    min: 1
+    max: 32768
+    help:
+      zh_Hans: 指定生成结果长度的上限。如果生成结果截断，可以调大该参数。
+      en_US: Specifies the upper limit on the length of generated results. If the generated results are truncated, you can increase this parameter.
+  - name: presence_penalty
+    label:
+      zh_Hans: 存在惩罚
+      en_US: Presence Penalty
+    type: float
+    default: 0.0
+    min: -2.0
+    max: 2.0
+    help:
+      zh_Hans: 存在惩罚，降低重复内容的概率。
+      en_US: Presence penalty, reduces the probability of repeated content.
+  - name: frequency_penalty
+    label:
+      zh_Hans: 频率惩罚
+      en_US: Frequency Penalty
+    type: float
+    default: 0.0
+    min: -2.0
+    max: 2.0
+    help:
+      zh_Hans: 频率惩罚，降低重复词汇的频率。
+      en_US: Frequency penalty, reduces the frequency of repeated words.
+pricing:
+  input: "2"
+  output: "8"
+  unit: "0.000001"
+  currency: RMB

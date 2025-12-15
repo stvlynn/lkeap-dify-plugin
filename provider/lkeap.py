@@ -16,10 +16,11 @@ class LkeapModelProvider(ModelProvider):
 
         :param credentials: provider credentials, credentials form defined in `provider_credential_schema`.
         """
+        # Validate with LLM model (uses secret_key as API key for OpenAI-compatible API)
         try:
-            model_instance = self.get_model_instance(ModelType.RERANK)
+            model_instance = self.get_model_instance(ModelType.LLM)
             model_instance.validate_credentials(
-                model="lke-reranker-base", credentials=credentials)
+                model="deepseek-v3", credentials=credentials)
         except CredentialsValidateFailedError as ex:
             raise ex
         except Exception as ex:
