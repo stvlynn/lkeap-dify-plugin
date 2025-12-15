@@ -17,9 +17,9 @@ class LkeapModelProvider(ModelProvider):
         :param credentials: provider credentials, credentials form defined in `provider_credential_schema`.
         """
         try:
-            model_instance = self.get_model_instance(ModelType.LLM)
+            model_instance = self.get_model_instance(ModelType.RERANK)
             model_instance.validate_credentials(
-                model="deepseek-v3", credentials=credentials)
+                model="lke-reranker-base", credentials=credentials)
         except CredentialsValidateFailedError as ex:
             raise ex
         except Exception as ex:

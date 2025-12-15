@@ -84,16 +84,14 @@ class LkeapRerankModel(RerankModel):
         """
         try:
             client = self._setup_lkeap_client(credentials)
-            req = models.ChatCompletionsRequest()
+            req = models.RunRerankRequest()
             params = {
-                "Model": model,
-                "Messages": [{"Role": "user", "Content": "hello"}],
-                "TopP": 1,
-                "Temperature": 0,
-                "Stream": False,
+                "Query": "test",
+                "Docs": ["test document"],
+                "Model": model
             }
             req.from_json_string(json.dumps(params))
-            client.ChatCompletions(req)
+            client.RunRerank(req)
         except Exception as e:
             raise CredentialsValidateFailedError(
                 f"Credentials validation failed: {e}")
@@ -103,9 +101,10 @@ class LkeapRerankModel(RerankModel):
         secret_key = credentials["secret_key"]
         cred = credential.Credential(secret_id, secret_key)
         httpProfile = HttpProfile()
+        httpProfile.endpoint = "lkeap.intl.tencentcloudapi.com"
         clientProfile = ClientProfile()
         clientProfile.httpProfile = httpProfile
-        client = lkeap_client.LkeapClient(cred, "ap-guangzhou", clientProfile)
+        client = lkeap_client.LkeapClient(cred, "ap-jakarta", clientProfile)
         return client
 
     @property

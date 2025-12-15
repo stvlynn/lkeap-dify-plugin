@@ -4,8 +4,8 @@ label:
   en_US: LKEAP
   zh_Hans: 腾讯知识引擎
 description:
-  en_US: Models provided by Tencent LKEAP.
-  zh_Hans: 腾讯知识引擎原子能力 提供的模型。
+  en_US: Models provided by Tencent LKEAP International.
+  zh_Hans: 腾讯知识引擎国际站提供的模型。
 icon_small:
   en_US: icon_s_en.svg
 icon_large:
@@ -18,7 +18,6 @@ help:
   url:
     en_US: https://console.cloud.tencent.com/cam/capi
 supported_model_types:
-  - llm
   - rerank
   - text-embedding
 configurate_methods:
@@ -42,10 +41,6 @@ provider_credential_schema:
       type: secret-input
       variable: secret_key
 models:
-  llm:
-    position: models/llm/_position.yaml
-    predefined:
-      - "models/llm/*.yaml"
   rerank:
     position: models/rerank/_position.yaml
     predefined:
@@ -58,6 +53,5 @@ extra:
   python:
     provider_source: provider/lkeap.py
     model_sources:
-      - models/llm/llm.py
       - models/rerank/rerank.py
       - models/text_embedding/text_embedding.py
